@@ -9,9 +9,15 @@
     "mongoose": "^6.3.5",
     "nodemon": "^2.0.16"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "power-assert": "^1.6.1",
+    "supertest": "^6.2.3"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha template/test/**/*.test.js --exit",
+    "cov": "nyc mocha 'template/test/**/*.test.js' --exit",
     "dev": "nodemon mini_node/index.js",
     "express": "nodemon template/server/index.js"
   },

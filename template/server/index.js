@@ -19,6 +19,12 @@ app.use(
 app.use(api);
 app.use(templateRouter);
 
+app.use((req, res, next) => {
+  const err = new Error("Not Found");
+  err.status = 404;
+  next(err);
+});
+
 app.use("/", (req, res, next) => {
   res.send("hello express");
 });
@@ -26,3 +32,5 @@ app.use("/", (req, res, next) => {
 app.listen(8080, () => {
   console.log("server is running on http://localhost:8080");
 });
+
+module.exports = app;
